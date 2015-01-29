@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* CSS Document */
+
+.bodyBackgr {
+	background:url(../_images/back-1.jpg) no-repeat;
+	background-position:center;
+}
+
+.imgPanels {
+	display: none;
+}
+.imgData {
+	display:none;
+}
+.imgDataBlock {
+	display: none;
+}
+
+.formLayout {
+	width: 320px;
+	background-color: #1B1B42;
+	padding: 5px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+}
+.formLayout .formBlock {
+	background-color: #fff;
+	padding: 15px 8px 8px;
+}
+
+.formLayout .submit input {
+	margin-left:10%;
+	cursor:pointer; 
+	font-size:1.4em;
+	width:85%; 
+	height:35px; 
+	border:2px solid #ffffff;  
+	background:#F15c22; 
+	color:white; 
+	padding:2px; 
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px; 
+	border-radius: 8px;
+}
+.formLayout br
+{
+	clear: left;
+}
+.hideType {
+	display: none;
+}
+.spacer {
+	height: 10px;
+}
+.proyecto_carpeta {
+	display: none;
+}

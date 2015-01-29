@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* CSS Document */
+
+/***********************
+*  Carousel
+***********************/
+
+.carousel {
+
+}
+/*fade effect*/
+.carousel .item {
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  -ms-transition: all .4s;
+  -o-transition: all .4s;
+  transition: all .4s;
+}
+.carousel .active.left, .carousel .active.right {
+  opacity:0;
+  z-index:2;
+}
+.carousel .active.left {left: -100px}
+.carousel .active.right {left: 100px}
+
+.carousel .next, .carousel .prev {
+  left: 0;
+  opacity:0.9;
+  z-index:3;
+}
+.carousel .next {left: 50px;}
+.carousel .prev {left: -50px;}
+
+.carousel img {
+  /*position*/
+  margin: 40px auto 10px auto;
+  width: auto;
+  max-height: 80%;
+  
+  /*styling*/
+}
+.carousel-caption {
+  position: relative;
+  right: 0;
+  left: 0;
+  bottom: 20px;
+  
+  width: 400px;
+  overflow: hidden;
+  margin: 0 auto;
+  
+  /*styling*/
+  text-shadow: none;
+  color: #555;
+}
+.carousel-caption h1 {
+  font-size: 18px;
+  
+  display: inline-block;
+  border-bottom: 2px solid #555;
+  padding: 10px 0;
+}
+.carousel-control {
+  width: 5%;
+  color: #555;
+  opacity: 0.3;
+  font-size: 50px;
+  margin-top: -50px;
+  text-shadow: none;
+}
+.carousel-control:hover {
+  color: #555;
+}
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none;
+}
+.carousel-control .fa {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-block;
+}
+.carousel-indicators {
+  bottom: 0;
+}
+.carousel-indicators li {
+  width: 12px;
+  height: 12px;
+  margin: 0 3px;
+  background: #555;
+  opacity: 0.3;
+  border: none;
+  transition: all 0.3s;
+}
+.carousel-indicators li.active {
+  width: 12px;
+  height: 12px;
+  margin: 0 3px;
+  opacity: 1;
+  background-color: #555;
+}

@@ -1,0 +1,186 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media print {
+	.reportTemplate {
+		display:block !important;
+	}
+	button.reportClose, button.reportPrint {
+		display:none !important;
+	}
+}
+.imgDataBlock {
+	display: none;
+}
+
+.imgPanels {
+	display: none;
+}
+
+.formLayout {
+	width: 320px;
+	background-color: #1B1B42;
+	padding: 5px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+}
+.formLayout .formBlock {
+	background-color: #fff;
+	padding: 15px 8px 8px;
+}
+.formLayout h3 {
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	margin-bottom: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 130%;
+	line-height: 1.1;
+	margin-top: 3px;
+	margin-right: 0;
+	margin-left: 0;
+}
+.formLayout p.intro {
+	font-size: small;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+.formLayout label {
+	font-size: small;
+	text-align: right;
+	padding-right: 5px;
+	padding-top:4px;
+	font-weight: normal;
+	display: block;
+	width: 9em;
+	float: left;
+	margin-bottom: 10px;
+}
+.formLayout input {
+	display: block;
+	width: 12em;
+	float: left;
+	margin-bottom: 10px;
+}
+.formLayout input[type='checkbox'] {
+	width: 1em;
+	margin-top: 5px;
+
+}
+
+.formLayout .submit input {
+	margin-left:10%;
+	cursor:pointer; 
+	font-size:1.4em;
+	width:85%; 
+	height:35px; 
+	border:2px solid #ffffff;  
+	background:#F15c22; 
+	color:white; 
+	padding:2px; 
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px; 
+	border-radius: 8px;
+}
+.formLayout br
+{
+	clear: left;
+}
+.hideType {
+	display: none;
+}
+.spacer {
+	height: 10px;
+}
+.proyecto_carpeta {
+	display: none;
+}
+.ic .panels .close {
+	display: block;
+	float: right;
+	position: relative;
+	cursor: pointer;
+	margin-right: 5px;
+}
+.tempSpot {
+	color: #333;
+	display: block;
+	font-family: verdana;
+	font-size: 12px;
+	font-weight: bold;
+	position: absolute;
+	white-space: nowrap;
+	z-index: 200;
+	background-image: url(../_images/pinpointBox.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	height: 42px;
+	width: 76px;
+	padding-top: 23px;
+	text-align: center;
+}
+.tempSpot img {
+	z-index: 200 ;
+}
+.imgDisplay .imgInfoHed h3, .imgPreview .imgInfoHed h3 {
+	/*font-size: 1em; */
+	margin-bottom: 0px;
+}
+.imgDisplay p.intro, .imgPreview p.intro {
+	margin-top: 0px;
+}
+.imgDisplay .imgInfoBlock, .imgPreview .imgInfoBlock {
+	font-size: small;
+	margin-bottom: 10px;
+}
+.imgDisplay .imgInfoBlock td, .imgPreview .imgInfoBlock td {
+	border: 1px solid #FFF;
+	padding: 0 5px 0 5px;
+	background-color: #CCC;
+}
+.reportMain .chrtInfoBlock {
+	font-size: small;
+}
+.reportMain .chrtInfoBlock td {
+	border: 1px solid #DDD;
+	padding: 0 5px 0 5px;
+}
+.imgDisplayTemplate {
+	display:none;
+}
+.imgAnalyze button.TempSpotPost {
+	display:none;
+}
+.chartDisplayTemplate .chartMain {
+	display:none;
+}
+.chartDisplayTemplate .chartBody .delData {
+	cursor: pointer;
+}
+.reportTemplate {
+	display:none;
+}
+.imgAdmin {
+	display: inline-block;
+}
+.jstree-0 li[rel="imgIR"] > a > .jstree-icon {
+    background-image: url(./_images/imgirb.png);
+    background-position: 0px 0px;
+}
+.jstree-0 li[data-range="1"] a .jstree-icon {
+    background-position: -15px 0px !important;
+}
+.jstree-0 li[data-range="2"] > a > .jstree-icon {
+    background-position: -30px 0px !important;
+}
+#chartBlock {
+	margin:15px;
+	height:300px;
+	 
+}
+#chartBlock table.jqplot-table-legend {
+  /*  max-width:auto; */
+}
+
