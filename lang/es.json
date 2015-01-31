@@ -8,5 +8,15 @@
     "caption3" : "Explorar y anotar cada &aacute;rea",
     "caption4" : "Crear tablas cuantificantes",
     "caption5" : "Generar Reportes",
-    "otherLang" : "English"
+    "otherLang" : "English",
+	"contact" : "Contacto",
+	"login" : "Ingreso Clientes",
+	"loginGreet" : "Por favor ingrese su eMail y clave de acceso.",
+	"regError" : "Hay que registrarse para entrar en el sitio. <br/>",
+	"supError" : "Solo supervisores pueden a&ntilde;adir usuarios. <br/>",
+	"kwrdError" : "Clave de accesso incorrecta. Asegure que el boton de may&uacute;sculas no est&eacute; presionado.",
+	"eMailError" : "El eMail no se encuentra registrado.",
+	"sesEnd" : "Sesion terminada.<br/>",
+	"enter" : "Enviar",
+	"images" : "No hay "
 }

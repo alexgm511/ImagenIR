@@ -8,5 +8,15 @@
     "caption3" : "Monitor and annotate each area",
     "caption4" : "Chart an installation's condtition through time",
     "caption5" : "Generate Reports",
-    "otherLang" : "Espa&ntilde;ol"
+    "otherLang" : "Espa&ntilde;ol",
+	"contact" : "Contact",
+	"login" : "Client Login",
+	"loginGreet" : "Please enter your email and password.",
+	"regError" : "You must be registered to enter the site. <br/>",
+	"supError" : "Only supervisors can add new users. <br/>",
+	"kwrdError" : "Keyword is incorrect. Check the Caps Lock button.",
+	"eMailError" : "The eMail address is not registered.",
+	"sesEnd" : "Session has ended.<br/>",
+	"enter" : "Enter",
+	"images" : "There are no "
 }

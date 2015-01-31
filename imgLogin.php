@@ -5,6 +5,51 @@
 	if (isset($_GET['accesscheck'])) {
 	  $_SESSION['PrevUrl'] = $_GET['accesscheck'];
 	}
+	// check language or set English as default and get lang terms
+	$_lang = "en";
+	if (isset($_GET['lng'])) {
+		$_lang = $_GET['lng'];
+	}
+	if ($_lang !== "en" && $_lang !== "es") { $_lang = "en"; }
+	$_langFile = json_decode(file_get_contents("lang/".$_lang.".json"), true);
+	foreach ($_langFile as $key => $val){
+		switch ($key) {
+			case "otherLang":
+				$_otherLang = $val;
+				break;
+			case "contact":
+				$_contact = $val;
+				break;
+			case "login":
+				$_login = $val;
+				break;
+			case "loginGreet":
+				$_loginGreet = $val;
+				break;
+			case "enter":
+				$_enter = $val;
+				break;
+			case "regError":
+				$_regError = $val;
+				break;
+			case "supError":
+				$_supError = $val;
+				break;
+			case "kwrdError":
+				$_kwrdError = $val;
+				break;
+			case "eMailError":
+				$_eMailError = $val;
+				break;
+			case "sesEnd":
+				$_sesEnd = $val;
+				break;
+			case "images":
+				$_images = $val;
+				break;
+		}
+	}
+	
 	$_formIntro = "";
 	$loginFormAction = $_SERVER['PHP_SELF'];
 	$msg = "";
@@ -14,10 +59,10 @@
 	if (isset($_GET['errmsg'])) {
 		switch ($_GET['errmsg']) {
 			case 9:
-				$_formIntro = "Hay que registrarse para entrar en el sitio. <br/>";
+				$_formIntro = $_regError;
 				break;
 			case 8:
-				$_formIntro = "Solo supervisores pueden a&ntilde;adir usuarios. <br/>";
+				$_formIntro = $_supError;
 				break;
 			case 7:
 				session_start();
@@ -25,13 +70,13 @@
 				unset($_SESSION['usuarioID']);
 				$_SESSION = array();
 				//session_destroy(); 
-				$_formIntro = "Sesion terminada.<br/>";				
+				$_formIntro = $_sesEnd;				
 		}
 	}
 	// Check if is a log-in or sign-up
 	
-	 $_formHead = "Ingreso Clientes";
-	 $_formIntro .= "Por favor ingrese su eMail y clave de acceso.";
+	 $_formHead = $_login;
+	 $_formIntro .= $_loginGreet;
 	if (isset($_POST['eMail'])) {
 	  $logineMail=$_POST['eMail'];
 	  $loginPassword=$_POST['clave'];
@@ -54,10 +99,10 @@
 				// header("Location: " . $MM_redirectLoginSuccess );
 			} else {
 				 //header("Location: " . $MM_redirectLoginFailed );
-				 $errorTxt = "Clave de accesso incorrecta. Asegure que el boton de may&uacute;sculas no est&eacute; presionado.";
+				 $errorTxt = $_kwrdError;
 			}
 	   } else {
-		   $errorTxt = "El eMail no se encuentra registrado.";
+		   $errorTxt = $_eMailError;
 	   }
 	 $msg = "<span class='warnMsg'>".$errorTxt."</span><br/>";  
 	}
@@ -96,8 +141,8 @@
           
            <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="#contact">Contacto</a></li>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#contact"><?php echo $_contact; ?></a></li>
           </ul>
         </div><!--/.nav-collapse -->
     </div><!-- /.navbar -->
@@ -123,7 +168,7 @@
          <input type="text" name="eMail" id="eMail" class="form-control" placeholder="eMail" autofocus>
         <input type="password" name="clave" id="clave" class="form-control" placeholder="Clave">
           <div class="form-group">
-              <button type="submit" class="btn btn-default btn-primary btn-block">Enviar</button>
+              <button type="submit" class="btn btn-default btn-primary btn-block"><?php echo $_enter; ?></button>
           </div>
         </form>
       </div>
