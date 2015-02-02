@@ -18,5 +18,9 @@
 	"eMailError" : "El eMail no se encuentra registrado.",
 	"sesEnd" : "Sesion terminada.<br/>",
 	"enter" : "Enviar",
-	"images" : "No hay "
+	"images" : "No hay ",
+	"firstName" : "Nombre",
+	"lastName1" : "Apellido paterno",
+	"lastName2" : "Apellido materno",
+	"password" : "Contrase&ntilde;a"
 }

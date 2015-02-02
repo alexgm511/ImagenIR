@@ -47,6 +47,18 @@
 			case "images":
 				$_images = $val;
 				break;
+			case "firstName":
+				$_firstName = $val;
+				break;
+			case "lastName1":
+				$_lastName1 = $val;
+				break;
+			case "lastName2":
+				$_lastName2 = $val;
+				break;
+			case "password":
+				$_password = $val;
+				break;
 		}
 	}
 	
@@ -104,7 +116,7 @@
 	   } else {
 		   $errorTxt = $_eMailError;
 	   }
-	 $msg = "<span class='warnMsg'>".$errorTxt."</span><br/>";  
+	 $msg = '<span class="warnMsg">'.$errorTxt.'</span><br/>';  
 	}
 
 ?>
@@ -142,7 +154,7 @@
            <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#contact"><?php echo $_contact; ?></a></li>
+              <li id="contacto"><a href="#"><?php echo $_contact; ?></a></li>
           </ul>
         </div><!--/.nav-collapse -->
     </div><!-- /.navbar -->
@@ -161,12 +173,12 @@
           <form id="loginVM" name="loginVM" method="POST" action="<?php echo $loginFormAction; ?>">
 			<p class="help-block"><?php echo $msg . $_formIntro; ?></p>			
         <div class="hideType">
-          <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" autofocus>
-          <input type="text" name="apellidoP" id="apellidoP" class="form-control" placeholder="Apellido Paterno" autofocus>
-          <input type="text" name="apellidoM" id="apellidoM" class="form-control" placeholder="Apellido Materno" autofocus>
+          <input type="text" name="nombre" id="nombre" class="form-control" placeholder=<?php echo $_firstName; ?>>
+          <input type="text" name="apellidoP" id="apellidoP" class="form-control" placeholder=<?php echo $_lastName1; ?>>
+          <input type="text" name="apellidoM" id="apellidoM" class="form-control" placeholder=<?php echo $_lastName2; ?>>
           </div>
          <input type="text" name="eMail" id="eMail" class="form-control" placeholder="eMail" autofocus>
-        <input type="password" name="clave" id="clave" class="form-control" placeholder="Clave">
+        <input type="password" name="clave" id="clave" class="form-control" placeholder=<?php echo $_password; ?>>
           <div class="form-group">
               <button type="submit" class="btn btn-default btn-primary btn-block"><?php echo $_enter; ?></button>
           </div>

@@ -18,5 +18,9 @@
 	"eMailError" : "The eMail address is not registered.",
 	"sesEnd" : "Session has ended.<br/>",
 	"enter" : "Enter",
-	"images" : "There are no "
+	"images" : "There are no ",
+	"firstName" : "First Name",
+	"lastName1" : "Last Name 1",
+	"lastName2" : "Last Name 2",
+	"password" : "Password"
 }
