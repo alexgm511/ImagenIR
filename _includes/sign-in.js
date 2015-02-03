@@ -4,6 +4,7 @@ $(document).ready(function() {
 		$('input#formType').attr('value', 2);
 	}
     $(".topNavegation").find("#contacto").click(function() {
+		
         alert("Contact info");
     });
 

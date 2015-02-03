@@ -2,6 +2,130 @@
 <?php require_once('_includes/imagenMySQL.php'); ?>
 <?php require('_includes/functionsMySQL.php'); ?>
 <?php 
+	$_lang = $_SESSION['lang'];
+	if ($_lang !== "en" && $_lang !== "es") { $_lang = "en"; }	
+	$_langFile = json_decode(file_get_contents("lang/".$_lang.".json"), true);
+		foreach ($_langFile as $key => $val){
+			switch ($key) {
+				case "otherLang":
+					$_otherLang = $val;
+					break;
+				case "contact":
+					$_contact = $val;
+					break;
+				case "login":
+					$_login = $val;
+					break;
+				case "login":
+					$_exit = $val;
+					break;
+				case "loginGreet":
+					$_loginGreet = $val;
+					break;
+				case "enter":
+					$_enter = $val;
+					break;
+				case "regError":
+					$_regError = $val;
+					break;
+				case "supError":
+					$_supError = $val;
+					break;
+				case "kwrdError":
+					$_kwrdError = $val;
+					break;
+				case "eMailError":
+					$_eMailError = $val;
+					break;
+				case "sesEnd":
+					$_sesEnd = $val;
+					break;
+				case "images":
+					$_images = $val;
+					break;
+				case "image":
+					$_image = $val;
+					break;
+				case "firstName":
+					$_firstName = $val;
+					break;
+				case "lastName1":
+					$_lastName1 = $val;
+					break;
+				case "lastName2":
+					$_lastName2 = $val;
+					break;
+				case "password":
+					$_password = $val;
+					break;
+				case "exit":
+					$_exit = $val;
+					break;
+				case "client":
+					$_client = $val;
+					break;
+				case "availableImgs":
+					$_availableImgs = $val;
+					break;
+				case "charts":
+					$_charts = $val;
+					break;
+				case "openAll":
+					$_openAll = $val;
+					break;
+				case "analyze":
+					$_analyze = $val;
+					break;
+				case "saveSpots":
+					$_saveSpots = $val;
+					break;
+				case "genReport":
+					$_genReport = $val;
+					break;
+				case "genCharts":
+					$_genCharts = $val;
+					break;
+				case "local":
+					$_local = $val;
+					break;
+				case "date":
+					$_date = $val;
+					break;
+				case "tMax":
+					$_tMax = $val;
+					break;
+				case "tMin":
+					$_tMin = $val;
+					break;
+				case "close":
+					$_close = $val;
+					break;
+				case "print":
+					$_print = $val;
+					break;                
+				case "nameDate":
+					$_nameDate = $val;
+					break;
+				case "imgInfo":
+					$_imgInfo = $val;
+					break;
+				case "closeImg":
+					$_closeImg = $val;
+					break;
+				case "dateFmt":
+					$_dateFmt = $val;
+					break;        
+				case "change":
+					$_change = $val;
+					break;
+				case "copyRight":
+					$_copyRight = $val;
+					break;
+			}
+		}
+
+
+
 	  $_hasImages = 0;
 	  mysql_select_db($database_ImagenIR, $ImagenIR);
 	  $_usuario = GetSQLValueString($_SESSION['usuarioID'], "int");
@@ -280,10 +404,9 @@
           
            <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Inicio</a></li>
-              <li><a href="index.html">Cerrar</a></li>
-              <li><a href="#contact">Contacto</a></li>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="index.html"><?php echo $_exit; ?></a></li>
+              <li><a href="#contact"><?php echo $_contact; ?></a></li>
           </ul>
         </div><!--/.nav-collapse -->
     </div><!-- /.navbar -->
@@ -308,11 +431,11 @@
         </div>
     	<div id="Imagenes" class="col-lg-3 col-md-5 col-sm-7 col-xs-7">
             <ul class="nav nav-pills setState">
-                <li class="active stateImg"><a>Im&aacute;genes</a></li>
-                <li class="stateGraf"><a>Gr&aacute;ficos</a></li>
+                <li class="active stateImg"><a><?php echo $_images;?></a></li>
+                <li class="stateGraf"><a><?php echo $_charts;?></a></li>
             </ul>
-            <h4><?php echo $_noImgs;?>Im&aacute;genes Disponibles</h4>
-            <button type="button" class="btn btn-primary btn-xs" id="toggleTree" data-toggle="button">Abrir todas</button>
+            <h4><?php echo $_noImgs;?> <?php echo $_availableImgs;?></h4>
+            <button type="button" class="btn btn-primary btn-xs" id="toggleTree" data-toggle="button"><?php echo $_openAll;?></button>
              <div id="treeList">
         <!-- end #treeList --></div>
         </div>
@@ -322,7 +445,7 @@
                 <div class="panel panel-default">
                   <div class="panel-heading imgHead">
                     <button type="button" class="btn btn-default btn-xs pull-right imgClose">
-                      <span class="glyphicon glyphicon-remove"></span> Cerrar
+                      <span class="glyphicon glyphicon-remove"></span> <?php echo $_close;?>
                     </button>
                     <h4 class="panel-title">Title</h4>
                   </div>
@@ -332,10 +455,10 @@
                             Stats
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3 imgAnalyze">
-                            <button type="button" class="btn btn-primary analizar">Analizar</button>
+                            <button type="button" class="btn btn-primary analizar"><?php echo $_analyze;?></button>
                             <h2><span class="label label-default showTemp"></span></h2>
                             <button type="button" class="btn btn-default btn-xs TempSpotPost">
-                            <span class="glyphicon glyphicon-save"></span> Guardar Puntos</button>
+                            <span class="glyphicon glyphicon-save"></span> <?php echo $_saveSpots;?></button>
                         </div>                    
                         <div class="col-md-2 col-sm-2 col-xs-2 imgThresholdChg">
                             Threshold
@@ -367,19 +490,19 @@
                         <button type="button" class="btn btn-default btn-xs pull-right genReport">
                           <span class="glyphicon glyphicon-print"></span> Reporte
                         </button>&nbsp;
-                        <h4 class="panel-title">Gr&aacute;ficos</h4>
+                        <h4 class="panel-title"><?php echo $_charts;?></h4>
                       </div>
                       <div class="panel-body chartBody">
-                      	<button type="button" class="btn btn-small btn-primary makeCharts">Generar gr&aacute;ficos</button>
+                      	<button type="button" class="btn btn-small btn-primary makeCharts"><?php echo $_genCharts;?></button>
                             <table class="table table-bordered imgTabla">
                                 <thead>
                                   <tr>
                                     <th>ID</th>
-                                    <th>Sitio</th>
-                                    <th>Im&aacute;gen</th>
-                                    <th>Fecha</th>
-                                    <th>Temp-Max</th>
-                                    <th>Temp-Min</th>
+                                    <th><?php echo $_local;?></th>
+                                    <th><?php echo $_image;?></th>
+                                    <th><?php echo $_date;?></th>
+                                    <th><?php echo $_tMax;?></th>
+                                    <th><?php echo $_tMin;?></th>
                                     <th><span class="glyphicon glyphicon-remove"></span></th>
                                   </tr>
                                 </thead>
@@ -400,10 +523,10 @@
                     <div class="panel panel-default">
                       <div class="panel-heading reportHead">
                         <button type="button" class="btn btn-default btn-xs pull-right reportClose">
-                          <span class="glyphicon glyphicon-remove"></span> Cerrar
+                          <span class="glyphicon glyphicon-remove"></span> <?php echo $_close;?>
                         </button>
                         <button type="button" class="btn btn-default btn-xs pull-right reportPrint">
-                          <span class="glyphicon glyphicon-print"></span> Imprimir
+                          <span class="glyphicon glyphicon-print"></span> <?php echo $_print;?>
                         </button>
                         <h4 class="panel-title"></h4>
                       </div>
@@ -417,9 +540,9 @@
                             <table class="table table-bordered reportTabla">
                                 <thead>
                                   <tr>
-                                    <th>Nombre y Fecha</th>
-                                    <th>Im&aacute;gen</th>
-                                    <th>Datos</th>
+                                    <th><?php echo $_nameDate;?></th>
+                                    <th><?php echo $_image;?></th>
+                                    <th><?php echo $_imgInfo;?></th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -446,7 +569,7 @@
 			echo "<img id='".$_imgInfoArr[$_id]['imagenID']."' src='_images/".$_imgInfoArr[$_id]['IR_img_url_chica']."' width='90' height='68' /><br/>";
 			echo "</div>";
 			echo "<h4>".$_imgInfoArr[$_id]['nombre']."</h4>";
-			echo "<p class='intro'>".(date_format(date_create($_imgInfoArr[$_id]['fecha']), "d-m-Y, g:i a"))."</p>";
+			echo "<p class='intro'>".(date_format(date_create($_imgInfoArr[$_id]['fecha']), $_dateFmt))."</p>";
 			echo "</div>\n";
 			echo "<div class='imgInfoBlock'>".$_imgTableArr[$_id]."</div>";
 			echo "<div class='DCimgInfo'>";
@@ -454,7 +577,7 @@
 			echo "</div>";
 			echo "<div class='imgThreshold'>";
 			//echo "<form role='form'><div class='form-group'><label for='txtThreshold' class='col-sm-4'>Threshold</label><div class='col-sm-4'><input type='text' class='form-control input-sm' id='txtThreshold' value='".$_imgInfoArr[$_id]['Threshold']."'></div></div><button type='button' class='btn btn-primary btn-xs'>Cambiar</button></form>";
-			echo "<p><strong>Threshold</strong><input type='text' class='form-control input-sm' id='impThreshold' value='".$_imgInfoArr[$_id]['Threshold']."' /> <button type='button' id='chgThreshold' class='btn btn-primary btn-xs'>Cambiar</button></p>";
+			echo "<p><strong>Threshold</strong><input type='text' class='form-control input-sm' id='impThreshold' value='".$_imgInfoArr[$_id]['Threshold']."' /> <button type='button' id='chgThreshold' class='btn btn-primary btn-xs'>".$_change."</button></p>";
 			echo "</div>";
 			echo "</div>\n";
 		}
@@ -483,7 +606,7 @@
 	<div class="row">
     	<div class="panel panel-default footerInfo">
         	<div class="panel-body">
-        		<p class="text-center"><small>Derechos reservados ImagenIR</small></p>
+        		<p class="text-center"><small><?php echo $_copyRight;?></small></p>
             </div>
       <!-- end .footer --></div>     </div>
   <!-- end .container --></div>

@@ -10,57 +10,57 @@
 	if (isset($_GET['lng'])) {
 		$_lang = $_GET['lng'];
 	}
-	if ($_lang !== "en" && $_lang !== "es") { $_lang = "en"; }
+	if ($_lang !== "en" && $_lang !== "es") { $_lang = "en"; }	
 	$_langFile = json_decode(file_get_contents("lang/".$_lang.".json"), true);
-	foreach ($_langFile as $key => $val){
-		switch ($key) {
-			case "otherLang":
-				$_otherLang = $val;
-				break;
-			case "contact":
-				$_contact = $val;
-				break;
-			case "login":
-				$_login = $val;
-				break;
-			case "loginGreet":
-				$_loginGreet = $val;
-				break;
-			case "enter":
-				$_enter = $val;
-				break;
-			case "regError":
-				$_regError = $val;
-				break;
-			case "supError":
-				$_supError = $val;
-				break;
-			case "kwrdError":
-				$_kwrdError = $val;
-				break;
-			case "eMailError":
-				$_eMailError = $val;
-				break;
-			case "sesEnd":
-				$_sesEnd = $val;
-				break;
-			case "images":
-				$_images = $val;
-				break;
-			case "firstName":
-				$_firstName = $val;
-				break;
-			case "lastName1":
-				$_lastName1 = $val;
-				break;
-			case "lastName2":
-				$_lastName2 = $val;
-				break;
-			case "password":
-				$_password = $val;
-				break;
+		foreach ($_langFile as $key => $val){
+			switch ($key) {
+				case "otherLang":
+					$_otherLang = $val;
+					break;
+				case "contact":
+					$_contact = $val;
+					break;
+				case "login":
+					$_login = $val;
+					break;
+				case "loginGreet":
+					$_loginGreet = $val;
+					break;
+				case "enter":
+					$_enter = $val;
+					break;
+				case "regError":
+					$_regError = $val;
+					break;
+				case "supError":
+					$_supError = $val;
+					break;
+				case "kwrdError":
+					$_kwrdError = $val;
+					break;
+				case "eMailError":
+					$_eMailError = $val;
+					break;
+				case "sesEnd":
+					$_sesEnd = $val;
+					break;
+				case "images":
+					$_images = $val;
+					break;
+				case "firstName":
+					$_firstName = $val;
+					break;
+				case "lastName1":
+					$_lastName1 = $val;
+					break;
+				case "lastName2":
+					$_lastName2 = $val;
+					break;
+				case "password":
+					$_password = $val;
+					break;
+			}
 		}
-	}
 	
 	$_formIntro = "";
 	$loginFormAction = $_SERVER['PHP_SELF'];
@@ -107,6 +107,7 @@
 				$_SESSION['nombre'] = $loginRow['nombre'];
 				$_SESSION['apellidoP'] = $loginRow['apellidoP'];
 				$_SESSION['nivel'] = $loginRow['nivel'];
+				$_SESSION['lang'] = $_lang;
 				die("<script>location.href = '" . $MM_redirectLoginSuccess . "'</script>");
 				// header("Location: " . $MM_redirectLoginSuccess );
 			} else {
