@@ -44,8 +44,8 @@
 				case "sesEnd":
 					$_sesEnd = $val;
 					break;
-				case "images":
-					$_images = $val;
+				case "noImgTxt":
+					$_imagesCnt = $val;
 					break;
 				case "firstName":
 					$_firstName = $val;

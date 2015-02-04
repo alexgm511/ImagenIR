@@ -40,6 +40,9 @@
 				case "sesEnd":
 					$_sesEnd = $val;
 					break;
+				case "noImgTxt":
+					$_noImgTxt = $val;
+					break;
 				case "images":
 					$_images = $val;
 					break;
@@ -85,8 +88,8 @@
 				case "genCharts":
 					$_genCharts = $val;
 					break;
-				case "local":
-					$_local = $val;
+				case "locale":
+					$_locale = $val;
 					break;
 				case "date":
 					$_date = $val;
@@ -131,8 +134,14 @@
 	  $_usuario = GetSQLValueString($_SESSION['usuarioID'], "int");
 	  $_nivel = GetSQLValueString($_SESSION['nivel'], "int");
 
-	  
-	  $imgRS__query=sprintf("SELECT imagenID, titulo, nombre, fecha, IR_img_url, IR_img_url_chica, IR_data, img_url, img_url_chica, notas, img_max AS 'Temperatura-Max', img_min AS 'Temperatura-Min', temp_base AS 'Threshold', atm_temp AS 'Temp-Atmosferica', rel_humedad AS 'Humedad-Relativa', emisiv AS Emisividad, parent, pos FROM `Imagenes` WHERE usuarioID=".$_usuario." ORDER BY parent, pos");
+	   switch ($_lang) {
+		  case "es":
+			  $imgRS__query=sprintf("SELECT imagenID, titulo, nombre, fecha, IR_img_url, IR_img_url_chica, IR_data, img_url, img_url_chica, notas, img_max AS 'Temperatura-Max', img_min AS 'Temperatura-Min', temp_base AS 'Threshold', atm_temp AS 'Temp-Atmosferica', rel_humedad AS 'Humedad-Relativa', emisiv AS Emisividad, parent, pos FROM `Imagenes` WHERE usuarioID=".$_usuario." ORDER BY parent, pos");
+			  break;
+		  case "en":
+			  $imgRS__query=sprintf("SELECT imagenID, titulo, nombre, fecha, IR_img_url, IR_img_url_chica, IR_data, img_url, img_url_chica, notas, img_max AS 'Max-Temperature', img_min AS 'Min-Temperature', temp_base AS 'Threshold', atm_temp AS 'Atmospheric-Temp', rel_humedad AS 'Relative-Humidity', emisiv AS Emissivity, parent, pos FROM `Imagenes` WHERE usuarioID=".$_usuario." ORDER BY parent, pos");
+			  break;
+	   }
 	
 	  $imgRS = mysql_query($imgRS__query, $ImagenIR) or die(mysql_error());
 	  $_hasImages = mysql_num_rows($imgRS);
@@ -150,8 +159,16 @@
 	$_imgPoints = array();
 
 	  while ($imgRow = mysql_fetch_assoc($imgRS)) {
-		  // Calculate the Delta between base temp and High temp
-		$_rangeTest = $imgRow['Temperatura-Max'] - $imgRow['Threshold'];
+		   switch ($_lang) {
+			  case "es":
+				  // Calculate the Delta between base temp and High temp
+				$_rangeTest = $imgRow['Temperatura-Max'] - $imgRow['Threshold'];
+				break;
+			  case "en":
+				$_rangeTest = $imgRow['Max-Temperature'] - $imgRow['Threshold'];
+				break;
+		   }
+		
 		if ( $_rangeTest > 20 ) {
 			$_rango = 2;
 		} else if ( $_rangeTest > 10 ) {
@@ -213,7 +230,7 @@
 		}  */
 	  }
     } else {
-		$_noImgs = "No Hay ";
+		$_noImgs = $_noImgTxt;
 	}
 
 	mysql_free_result($imgRS);
@@ -317,7 +334,7 @@
 			foreach ($_imgInfoArr as $j) {
 				// find images
 				if ($j['parent']==$f['carpetaID']) {
-					$_images = true;
+					$_imgs = true;
 					$_firstChild = false;
 					if ($_imgCnt > 0) {
 						$_jsonString .= ', ';
@@ -417,9 +434,9 @@
   <div class="container">
     <div class="panel panel-info panelCliente">
         <div class="panel-heading">
-          <strong>Cliente: <?php echo $_SESSION['nombre'] . ' ' . $_SESSION['apellidoP']?></strong>
+          <strong><?php echo $_client; ?>: <?php echo $_SESSION['nombre'] . ' ' . $_SESSION['apellidoP']?></strong>
       		<?php if ($_nivel == 2) {
-				echo("<div class='imgAdmin pull-right'><form class='form-inline' method='POST' action='imgAdmin.php'><input type='hidden' name='admin' value='2' /><button type='submit' class='btn btn-default btn-xs'>Administrar</button></form></div>");
+				echo("<div class='imgAdmin pull-right'><form class='form-inline' method='POST' action='imgAdmin.php'><input type='hidden' name='admin' value='2' /><button type='submit' class='btn btn-default btn-xs'>Admin</button></form></div>");
 			}
             ?>
          </div>
@@ -485,10 +502,10 @@
                     <div class="panel panel-default">
                       <div class="panel-heading chartHead">
                         <button type="button" class="btn btn-default btn-xs pull-right chartClose">
-                          <span class="glyphicon glyphicon-remove"></span> Cerrar
-                        </button>
+                          <span class="glyphicon glyphicon-remove"></span> <?php echo $_close;?>
+                        </button>&nbsp;
                         <button type="button" class="btn btn-default btn-xs pull-right genReport">
-                          <span class="glyphicon glyphicon-print"></span> Reporte
+                          <span class="glyphicon glyphicon-print"></span> <?php echo $_genReport;?>
                         </button>&nbsp;
                         <h4 class="panel-title"><?php echo $_charts;?></h4>
                       </div>
@@ -498,7 +515,7 @@
                                 <thead>
                                   <tr>
                                     <th>ID</th>
-                                    <th><?php echo $_local;?></th>
+                                    <th><?php echo $_locale;?></th>
                                     <th><?php echo $_image;?></th>
                                     <th><?php echo $_date;?></th>
                                     <th><?php echo $_tMax;?></th>
