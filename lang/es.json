@@ -38,6 +38,7 @@
 	"date" : "Fecha",
 	"tMax" : "Temp-Max",
 	"tMin" : "Temp-Min",
+	"temp" : "Temperatura",
 	"close" : "Cerrar",
 	"print" : "Imprimir",                 
 	"nameDate" : "Nombre y Fecha",
@@ -45,5 +46,13 @@
 	"closeImg" : "Cerrar im&aacute;gen",
 	"dateFmt" : "d-m-Y, g:i a",          
 	"change" : "Cambiar",
-	"copyRight" : "Derechos reservados ImagenIR"
+	"copyRight" : "Derechos reservados ImagenIR",
+	"msgMustBeEmpty" : "La carpeta tiene que estar vacia para eliminarla.",
+	"msgImgDelete" : "Las imagenes no se pueden eliminar.",
+	"loading" : "Cargando...",
+	"newNode" : "Carpeta nueva",
+	"delete" : "Eliminar",
+	"chgName" : "Cambiar nombre",
+	"closeAll" : "Cerrar todas",
+	"openAll" : "Abrir todas"
 }

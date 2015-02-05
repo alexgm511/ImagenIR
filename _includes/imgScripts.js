@@ -23,8 +23,50 @@ var imgMatrixID = 0;
 var intTempSpot = 0;
 var intSpots = 0;
 var postSpotsURL = "postSpots.php";
+var msgMustBeEmpty = "";
+var msgImgDelete = "";
+var loading = "";
+var newNode = "";
+var delNode = "";
+var chgName = "";
+var closeAll = "";
+var openAll = "";
+
+//Define language variables
+$.getJSON('lang/'+window.curLang+'.json', function(data) {
+	$.each( data, function( key, val ) {
+		switch (key) { 
+			case 'msgMustBeEmpty': 
+				window.msgMustBeEmpty = val;
+				break;
+			case 'msgImgDelete': 
+				window.msgImgDelete = val;
+				break;
+			case 'loading': 
+				window.loading = val;
+				break;      
+			case 'newNode': 
+				window.newNode = val;
+				break;
+			case 'delNode': 
+				window.delNode = val;
+				break;
+			case 'chgName': 
+				window.chgName = val;
+				break;
+			case 'closeAll': 
+				window.closeAll = val;
+				break;
+			case 'openAll': 
+				window.openAll = val;
+				break;
+		}
+	});	
+});
+
 
 $(document).ready(function() {
+	
 	$('#Imagenes .setState li').click(function(e) {
 		var myNav = $(this);
 		if (myNav.attr('class') == 'stateImg') {
@@ -188,12 +230,12 @@ $(document).ready(function() {
 	
 	// open all folders on tree
 	$('#Imagenes button#toggleTree').click(function() {
-		if ($('#Imagenes button#toggleTree').html() === "Cerrar todas") {
+		if ($('#Imagenes button#toggleTree').html() === window.closeAll) {
 			$("#treeList").jstree("close_all", -1);
-			$('#Imagenes button#toggleTree').html('Abrir todas');
+			$('#Imagenes button#toggleTree').html(window.openAll);
 		} else {
 			$("#treeList").jstree("open_all", 1);
-			$('#Imagenes button#toggleTree').html('Cerrar todas');
+			$('#Imagenes button#toggleTree').html(window.closeAll);
 		}
 	});
 
@@ -375,6 +417,29 @@ $(document).ready(function() {
 		});
     });
 	// End Posting tempSpots to database
+	
+	// language change for context menu
+	var langItems = function(node){
+		var items = {
+				"rename" : {
+					"label" : window.chgName,
+					"action" : function (obj) { this.rename(obj); 
+					}
+				},
+				"create" : {
+					"label" : window.newNode,
+					"action" : function (obj) { this.create(obj); }
+				},
+				"remove" : {
+					"label" : window.delNode,
+					"action" : function (obj) { this.remove(obj); }
+				},
+				"ccp" : false
+		}
+		return items;
+		console.log(items);
+	}
+	
 
 	// jsTree code
 		$("#treeList").bind("before.jstree", function (e, data) {
@@ -382,7 +447,7 @@ $(document).ready(function() {
 				var node = data.args[0][0];
 				if ($(node).find('li[rel="imgIR"]').length != 0){
 					e.stopImmediatePropagation();
-					alert("La carpeta tiene que estar vacia para eliminarla.");
+					alert(window.msgMustBeEmpty);
 					return false;
 				}
             }
@@ -401,7 +466,7 @@ $(document).ready(function() {
 						return false;
 					},
 					"delete_node" : function() {
-						alert ("Las imagenes no se pueden eliminar.");
+						alert (window.msgImgDelete);
 						return false;
 					},
 					"hover_node" : function(obj) {
@@ -430,28 +495,30 @@ $(document).ready(function() {
          },
 		"core" : {
 		 "animation" : 0,
-		 "strings" : { loading : "Cargando ...", new_node : "Carpeta nueva" }
+		 "strings" : { loading : window.loading, new_node : window.newNode }
 		 },
 		 "ui" : {
 		 "select_limit" : 1
 		 },
 		 "contextmenu" : {
-			items : {
+			 items: langItems
+		/*	items : {
 				"rename" : {
-					"label" : "Cambiar nombre",
+					"label" : function() {return '"'+window.chgName+'"';},
+					//"label" : window.chgName,
 					"action" : function (obj) { this.rename(obj); 
 					}
 				},
 				"create" : {
-					"label" : "Carpeta nueva",
+					"label" : window.newNode,
 					"action" : function (obj) { this.create(obj); }
 				},
 				"remove" : {
-					"label" : "Eliminar",
+					"label" : window.delNode,
 					"action" : function (obj) { this.remove(obj); }
 				},
 				"ccp" : false
-			}
+			} */
 		},
         "json_data": {
             "data": [ 		

@@ -382,6 +382,7 @@
 	var folders = <?php echo $_idMax; ?>;
 	var usuarioID = <?php echo $_SESSION['usuarioID']; ?>;
 	var treeFolders =  <?php echo $_jsonString; ?>;
+	var curLang =  "<?php echo $_lang; ?>";
 </script>
 <script type="text/javascript" src="_includes/imgScripts.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>

@@ -38,6 +38,7 @@
 	"date" : "Date",
 	"tMax" : "Max-Temp",
 	"tMin" : "Min-Temp",
+	"temp" : "Temperature",
 	"close" : "Close",
 	"print" : "Print",                 
 	"nameDate" : "Name & Date",
@@ -45,6 +46,13 @@
 	"closeImg" : "Close Image",
 	"dateFmt" : "m-d-Y, g:i a",          
 	"change" : "Change",
-	"copyRight" : "&reg; All Rights Reserved ImagenIR"
-
+	"copyRight" : "&reg; All Rights Reserved ImagenIR",
+	"msgMustBeEmpty" : "To delete folder, it must be empty.",
+	"msgImgDelete" : "Images cannot be deleted.",
+	"loading" : "Loading...",
+	"newNode" : "New Folder",
+	"delNode" : "Delete",
+	"chgName" : "Rename",
+	"closeAll" : "Close All",
+	"openAll" : "Open All"
 }
